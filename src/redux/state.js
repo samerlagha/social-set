@@ -10,6 +10,7 @@ import { rerenderEntireTree } from "../render";
         {id:3, message:'al hamdu li llah',likesCount:2},
         {id:4, message:'Allah akbar',likesCount:2},
       ],
+      newPostText:'it-kamasutra.com',
      
     },
 
@@ -36,13 +37,20 @@ import { rerenderEntireTree } from "../render";
     
   }
 
-  export let addPost = postMessage=>{
+  export let addPost = ()=>{
     let newPost={
       id:5,
-      message:postMessage,
+      message:state.profilePage.newPostText,
       likesCount:0,
     };
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText='';
+    rerenderEntireTree(state);
+  }
+
+  export let updateNewPostText = (newText)=>{
+   
+    state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
   }
 
