@@ -16,8 +16,8 @@ let store={
 
         {id:1, message:'Hi,how are you?',likesCount:12},
         {id:2, message:'It is my first post',likesCount:2},
-        {id:3, message:'al hamdu li llah',likesCount:2},
-        {id:4, message:'Allah akbar',likesCount:2},
+        {id:3, message:'very well',likesCount:2},
+        {id:4, message:'react ii is nice',likesCount:2},
       ],
       newPostText:'it-kamasutra.com',
      
