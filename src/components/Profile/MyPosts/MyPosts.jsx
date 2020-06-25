@@ -41,6 +41,7 @@ const MyPosts = (props) => {
     
        
       </div>
+
     </div>
   );
 };
