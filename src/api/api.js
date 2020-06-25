@@ -1,54 +1,50 @@
-import * as axios from 'axios';
+import * as axios from "axios";
 
 
 const instance = axios.create({
-    withCredentials:true,
-    baseURL:`https://social-network.samuraijs.com/api/1.0/`,
-    headers:{
-        "API-KEY":"b40b8b6d-2301-4de2-ae38-42cc8ad6ec01"
-      
+    withCredentials: true,
+    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+    headers:     {
+        "API-KEY": "b1775b2f-c3a5-4509-8dc9-90b5629de7c3"
     }
-})
+});
 
-export const userAPI={
-     getUsers(currentPage=1,pageSize=10){
-        return  instance.get( `users?page=${currentPage}
-        &count=${pageSize}`)
-        .then(response=>response.data);
-      },
-      follow(userId){
-        return instance.post(`follow?${userId}`)
-      },
-     
-      unfollow(userId){
-         return instance.delete(`follow?${userId}`)
-     },
 
-     getProfile(userId){
+export const usersAPI = {
+    getUsers(currentPage = 1, pageSize = 10) {
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+            .then(response => {
+                return response.data;
+            });
+    },
+    follow(userId) {
+        return instance.post(`follow/${userId}`)
+    },
+    unfollow(userId) {
+        return instance.delete(`follow/${userId}`)
+    },
+    getProfile(userId) {
+        console.warn('Obsolete method. Please profileAPI object.')
+        return profileAPI.getProfile(userId);
+    }
+}
 
-     return profileAPI.getProfile(userId)
-    
-     }
+export const profileAPI = {
+    getProfile(userId) {
+        return instance.get(`profile/` + userId);
+    },
+    getStatus(userId) {
+        return instance.get(`profile/status/` + userId);
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status`, { status: status });
+    }
+}
+
+export const authAPI = {
+    me() {
+        return instance.get(`auth/me`)
+    }
 }
 
 
-export const profileAPI={
-  
-  getProfile(userId){
-
-  return instance.get(`profile/` + userId)
- 
-  },
-  getStatus(userId){
-    return instance.get(`profile/status/`+ userId)
-  },
-  updateStatus(status){
-    return instance.put(`profile/status/`,{status: status})
-  }
-}
-export const authAPI ={
-
-  me(){
-      return instance.get(`auth/me` )
-  },
-}
