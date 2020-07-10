@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './ProfileInfo.module.css';
+
 import { useState } from 'react';
 import { useEffect } from 'react';
 

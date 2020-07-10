@@ -3,6 +3,7 @@ import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 
 const Navbar = () => {
+    let url='';
     return (
         <nav className={s.nav}>
             <div className={s.item}>
@@ -16,13 +17,13 @@ const Navbar = () => {
             </div>
 
             <div className={s.item}>
-                <a>News</a>
+                <a href={url}>News</a>
             </div>
             <div className={s.item}>
-                <a>Music</a>
+                <a href={url}>Music</a>
             </div>
             <div className={s.item}>
-                <a>Settings</a>
+                <a href={url}>Settings</a>
             </div>
         </nav>
     )
